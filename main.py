@@ -37,15 +37,25 @@ def send_heh(message):
     count_heh = int(message.text.split()[1]) if len(message.text.split()) > 1 else 5
     bot.reply_to(message, "хе" * count_heh)
 
-@bot.message_handler(commands=["код"])
+@bot.message_handler(commands=['код'])
 def code(message):
     inline_keyboard_markup = InlineKeyboardMarkup()
     inline_keyboard_markup.row(InlineKeyboardButton('Код бота', web_app=WebAppInfo(WEB_URL)))
     bot.reply_to(message, "Нажмите на кнопку ниже, чтобы увидеть код бота", reply_markup=inline_keyboard_markup)
+
+@bot.message_handler(commands=['help'])
+def send_help(message):
+    bot.reply_to(message, "/start и /hello - приветствие")
+    bot.send_message(message.chat.id, text="/bye - прощание")
+    bot.send_message(message.chat.id, text="/пароль - генерирует новый пароль")
+    bot.send_message(message.chat.id, text="/чоч - ???")
+    bot.send_message(message.chat.id, text="/монета - орел или решка")
+    bot.send_message(message.chat.id, text="/хех - хе * число, стоящее после 'хех'")
+    bot.send_message(message.chat.id, text="/код - код бота")
 
 
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
     bot.reply_to(message, message.text)
 
-bot.polling()
+bot.polling(none_stop = True)
