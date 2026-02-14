@@ -8,7 +8,7 @@ from telebot.types import (
 from bot_logic import gen_pass, game
 from config import TOKEN
 bot = telebot.TeleBot(TOKEN)
-WEB_URL = "https://github.com/eternnoir/pyTelegramBotAPI/blob/master/examples/mini_app.py"
+WEB_URL = "https://github.com/Sasha-6V/TelegramBot"
 
 @bot.message_handler(commands=['start', 'hello'])
 def send_welcome(message):
