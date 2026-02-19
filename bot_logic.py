@@ -8,8 +8,14 @@ def gen_pass(pass_length):
     return password
 
 def game():
-    moneta = random.randint(1,2)
-    if moneta == 1:
+    moneta = random.randint(1, 100)
+    if moneta <= 49:
         return "решка"
-    else:
+    elif moneta >= 50 and moneta <= 99:
         return "орел"
+    else:
+        return "монета встала на ребро"
+    
+def dice():
+    dice = random.randint(1, 6)
+    return dice
